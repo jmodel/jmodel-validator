@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.jmodel</groupId>
+	<artifactId>com.github.jmodel.validator.parent</artifactId>
+	<version>0.0.2</version>
+	<packaging>pom</packaging>
+
+	<name>jmodel-validator Parent</name>
+
+	<modules>
+		<module>../com.github.jmodel.validator.api</module>
+		<module>../com.github.jmodel.validator.impl</module>
+	</modules>
+	<url>https://github.com/jmodel/jmodel-validator</url>
+	<description>A validator base on generic jmodel</description>
+	<scm>
+		<url>https://github.com/jmodel/jmodel-validator.git</url>
+		<connection>scm:git:git@github.com:jmodel/jmodel-validator.git</connection>
+		<developerConnection>scm:git:git@github.com:jmodel/jmodel-validator.git</developerConnection>
+	</scm>
+
+	<properties>
+		<jmodel.version>0.0.2</jmodel.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>4.12</junit.version>
+		<jdk.version>1.8</jdk.version>
+		<jackson.version>2.6.1</jackson.version>
+		<org.apache.commons.version>3.4</org.apache.commons.version>
+		<maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
+		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+		<maven.clean.plugin.version>2.5</maven.clean.plugin.version>
+		<maven.javadoc.plugin.version>2.10.4</maven.javadoc.plugin.version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>ossrh1</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<id>ossrh2</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<dependencyManagement>
+		<dependencies>
+			
+			<dependency>
+				<groupId>com.github.jmodel</groupId>
+				<artifactId>com.github.jmodel.api</artifactId>
+				<version>${jmodel.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.jmodel</groupId>
+				<artifactId>com.github.jmodel.impl</artifactId>
+				<version>${jmodel.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${org.apache.commons.version}</version>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven.source.plugin.version}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${maven.javadoc.plugin.version}</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven.compiler.plugin.version}</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+					</configuration>
+				</plugin>
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-gpg-plugin</artifactId> 
+					<version>1.5</version> <executions> <execution> <id>sign-artifacts</id> <phase>verify</phase> 
+					<goals> <goal>sign</goal> </goals> </execution> </executions> </plugin> -->
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-gpg-plugin</artifactId> 
+				</plugin> -->
+		</plugins>
+	</build>
+
+
+</project>
