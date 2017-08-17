@@ -2,11 +2,10 @@ package com.github.jmodel.validator;
 
 import java.lang.reflect.Method;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
-import com.github.jmodel.api.ModelException;
+import com.github.jmodel.ModelException;
 import com.github.jmodel.validator.api.ValidationEngine;
 import com.github.jmodel.validator.api.ValidationEngineFactoryService;
 import com.github.jmodel.validator.api.domain.Validation;
@@ -23,13 +22,12 @@ public class ModelValidator {
 
 	private static String NAME_PATTERN = "([a-zA-Z_][a-zA-Z\\d_]*\\.)*[a-zA-Z_][a-zA-Z\\d_]*";
 
-	private static ResourceBundle messages = ResourceBundle.getBundle("com.github.jmodel.mapper.api.MessagesBundle");
-
-	public static <T> Result check(T sourceObj, String validationURI) {
+	public static <T> Result check(T sourceObj, String validationURI) throws ModelException {
 		return check(sourceObj, validationURI, null);
 	}
 
-	public static <T> Result check(T sourceObj, String validationURI, Map<String, Object> argsMap) {
+	public static <T> Result check(T sourceObj, String validationURI, Map<String, Object> argsMap)
+			throws ModelException {
 
 		final Validation validation = getValidation(validationURI);
 		logger.info(() -> "The validation is constructed : " + validationURI);
@@ -41,10 +39,10 @@ public class ModelValidator {
 
 	}
 
-	private static Validation getValidation(String validationURI) {
+	private static Validation getValidation(String validationURI) throws ModelException {
 
 		if (validationURI == null || !Pattern.matches(NAME_PATTERN, validationURI)) {
-			throw new ModelException(messages.getString("M_NAME_IS_ILLEGAL"));
+			throw new ModelException("ValidationURI is wrong");
 		}
 
 		// TODO consider more loading mechanism later, local or remote
@@ -52,7 +50,7 @@ public class ModelValidator {
 		try {
 			validationClz = Class.forName(validationURI);
 		} catch (ClassNotFoundException e) {
-			throw new ModelException(messages.getString("M_IS_MISSING"));
+			throw new ModelException("Validation is not found");
 		}
 
 		Validation validation = null;
@@ -61,7 +59,7 @@ public class ModelValidator {
 			validation = (Validation) (method.invoke(null));
 			return validation;
 		} catch (Exception e) {
-			throw new ModelException(messages.getString("M_IS_ILLEGAL"));
+			throw new ModelException("Could not get instance of Validation", e);
 		}
 
 	}

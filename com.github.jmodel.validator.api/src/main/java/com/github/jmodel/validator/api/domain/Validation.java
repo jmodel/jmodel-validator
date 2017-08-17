@@ -3,9 +3,11 @@ package com.github.jmodel.validator.api.domain;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.jmodel.ModelException;
 import com.github.jmodel.api.domain.Model;
 import com.github.jmodel.api.format.FormatEnum;
 import com.github.jmodel.validator.Result;
@@ -23,6 +25,8 @@ public abstract class Validation {
 	private List<String> rawVariables = new ArrayList<String>();
 
 	private List<String> rawFieldPaths = new ArrayList<String>();
+
+	private Map<String, Boolean> modelRecursiveMap = new HashMap<String, Boolean>();
 
 	private List<String> serviceList = new ArrayList<String>();
 
@@ -70,6 +74,14 @@ public abstract class Validation {
 		this.rawFieldPaths = rawFieldPaths;
 	}
 
+	public Map<String, Boolean> getModelRecursiveMap() {
+		return modelRecursiveMap;
+	}
+
+	public void setModelRecursiveMap(Map<String, Boolean> modelRecursiveMap) {
+		this.modelRecursiveMap = modelRecursiveMap;
+	}
+
 	public List<String> getServiceList() {
 		return serviceList;
 	}
@@ -99,7 +111,7 @@ public abstract class Validation {
 	}
 
 	public void execute(final Model model, final Map<String, List<String>> serviceArgsMap,
-			final Map<String, Object> myVariablesMap, final Result result) {
+			final Map<String, Object> myVariablesMap, final Result result) throws ModelException {
 
 	}
 
