@@ -1,0 +1,16 @@
+validation com.ebao.ri.ap98.validations.treaty.CreateTreaty {
+	
+	source: JSON
+	 
+	check model Treaty {
+		Treaty {
+			checkAAA(1) << TreatyCode;
+			checkAAA(2) << TreatyName;
+			checkAAA(3) << TreatyId;
+		}
+	}; 
+	check service {
+		checkAAA (3);
+	};  
+	  
+}   

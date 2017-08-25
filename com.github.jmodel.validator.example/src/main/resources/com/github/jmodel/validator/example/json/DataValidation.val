@@ -1,0 +1,12 @@
+validation com.github.jmodel.validator.example.json.DataValidation {
+	
+	source: JSON    
+	 
+	check model Content { 
+		Content {
+			IF Name == null THEN
+				fail: "Name can not be null"
+			ENDIF      
+		}     
+	};     
+}   

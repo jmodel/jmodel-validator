@@ -11,15 +11,21 @@ import com.github.jmodel.validator.api.ValidationEngineFactoryService;
 import com.github.jmodel.validator.api.domain.Validation;
 
 /**
- * Model validator.
+ * Public API for model validator.
  * 
  * @author jianni@hotmail.com
  *
  */
 public class ModelValidator {
 
+	/**
+	 * JDK Logger
+	 */
 	private final static Logger logger = Logger.getLogger(ModelValidator.class.getName());
 
+	/**
+	 * The pattern of validation URI.
+	 */
 	private static String NAME_PATTERN = "([a-zA-Z_][a-zA-Z\\d_]*\\.)*[a-zA-Z_][a-zA-Z\\d_]*";
 
 	public static <T> Result check(T sourceObj, String validationURI) throws ModelException {

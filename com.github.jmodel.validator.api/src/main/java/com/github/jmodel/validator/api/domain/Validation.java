@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.jmodel.FormatEnum;
 import com.github.jmodel.ModelException;
 import com.github.jmodel.api.domain.Model;
-import com.github.jmodel.api.format.FormatEnum;
 import com.github.jmodel.validator.Result;
 
 public abstract class Validation {

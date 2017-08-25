@@ -3,6 +3,14 @@ package com.github.jmodel.validator;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Validation result. If the check passes, isSuccess is true and the messages
+ * can be ignored. Otherwise, isSuccess is false and the message list is filled
+ * with error information.
+ * 
+ * @author jianni@hotmail.com
+ *
+ */
 public class Result {
 
 	private boolean isSuccess;
