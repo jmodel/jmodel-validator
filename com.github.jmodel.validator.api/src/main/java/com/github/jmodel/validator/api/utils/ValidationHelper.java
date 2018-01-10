@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-import com.github.jmodel.api.domain.Entity;
-import com.github.jmodel.api.domain.Model;
+import com.github.jmodel.api.entity.Entity;
+import com.github.jmodel.api.entity.Model;
 
 public class ValidationHelper {
 

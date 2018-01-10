@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 import com.github.jmodel.ModelBuilder;
 import com.github.jmodel.ModelException;
-import com.github.jmodel.api.domain.Model;
-import com.github.jmodel.api.utils.ModelHelper;
+import com.github.jmodel.api.entity.Model;
+import com.github.jmodel.utils.ModelHelper;
 import com.github.jmodel.validator.Result;
 import com.github.jmodel.validator.api.ValidationEngine;
 import com.github.jmodel.validator.api.domain.Validation;
